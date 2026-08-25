@@ -44,6 +44,66 @@
 </head>
 <body>
 
+<a class="visualmente-oculto" href="#contenido">Saltar al contenido</a>
+
+<div class="cookies-banner" data-cookies-banner hidden role="region" aria-label="Preferencias de cookies">
+  <div class="cookies-banner-inner">
+    <p class="cookies-banner-texto">
+      Usamos cookies propias y de terceros para analizar la navegación y, si lo autorizas, mostrarte contenido y publicidad relevante. Puedes aceptar todas, rechazarlas o personalizar tu elección. Más información en nuestra <a href="/aviso-legal.html#privacidad">política de privacidad</a>.
+    </p>
+    <div class="cookies-banner-acciones">
+      <button type="button" class="btn-texto" data-cookies-rechazar>Rechazar</button>
+      <button type="button" class="btn btn-sobre-oscuro" data-cookies-personalizar>Personalizar</button>
+      <button type="button" class="btn btn-cookies-aceptar" data-cookies-aceptar>Aceptar todas</button>
+    </div>
+  </div>
+</div>
+
+<div class="cookies-modal" data-cookies-modal hidden role="dialog" aria-modal="true" aria-labelledby="cookies-modal-titulo">
+  <div class="cookies-modal-caja">
+    <h2 id="cookies-modal-titulo">Preferencias de cookies</h2>
+    <p>Elige qué tipos de cookies quieres permitir. Las necesarias no se pueden desactivar porque son indispensables para el funcionamiento del sitio.</p>
+
+    <div class="cookies-categoria">
+      <div class="cookies-categoria-info">
+        <h3>Necesarias</h3>
+        <p>Permiten el funcionamiento básico del sitio (navegación, formulario de contacto). Siempre activas.</p>
+      </div>
+      <label class="cookies-switch">
+        <input type="checkbox" checked disabled aria-label="Cookies necesarias, siempre activas" />
+        <span class="cookies-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookies-categoria">
+      <div class="cookies-categoria-info">
+        <h3>Analíticas</h3>
+        <p>Nos ayudan a entender cómo se usa el sitio (Google Analytics) para mejorar la experiencia.</p>
+      </div>
+      <label class="cookies-switch">
+        <input type="checkbox" data-cookies-toggle="analiticas" aria-label="Permitir cookies analíticas" />
+        <span class="cookies-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookies-categoria">
+      <div class="cookies-categoria-info">
+        <h3>Marketing</h3>
+        <p>Permiten mostrar publicidad relevante en Google y Meta (Instagram/Facebook) según tu interés.</p>
+      </div>
+      <label class="cookies-switch">
+        <input type="checkbox" data-cookies-toggle="marketing" aria-label="Permitir cookies de marketing" />
+        <span class="cookies-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookies-modal-acciones">
+      <button type="button" class="btn btn-secundario" data-cookies-cerrar>Cancelar</button>
+      <button type="button" class="btn btn-primario" data-cookies-guardar>Guardar preferencias</button>
+    </div>
+  </div>
+</div>
+
 <header class="encabezado">
   <div class="barra-nav contenedor" style="padding-left:0; padding-right:0;">
     <a href="/" class="marca" aria-label="Dermaren — Inicio">
@@ -182,7 +242,7 @@
         <p>Clínica dermatológica dirigida por la Dra. Katerine Codriansky. Ciencia, salud y bienestar para tu piel.</p>
       </div>
       <div><h4>Navegación</h4><ul><li><a href="/servicios.html">Servicios</a></li><li><a href="/sobre-la-doctora.html">La Dra. Codriansky</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/aviso-legal.html#privacidad">Política de privacidad</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/aviso-legal.html#privacidad">Política de privacidad</a></li><li><a href="/aviso-legal.html#cookies" data-cookies-gestionar>Gestionar cookies</a></li></ul></div>
       <div><h4>Contacto</h4><ul><li>Centro Médico MED — Baquedano 166, Puerto Varas</li><li>Clínica Puerto Varas — Doctor Otto Bader 3, Puerto Varas</li><li><a href="tel:+56224756060">(2) 2475 6060</a></li><li><a href="mailto:contacto@dermaren.cl">contacto@dermaren.cl</a></li></ul></div>
     </div>
     <div class="pie-bottom">

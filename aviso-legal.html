@@ -16,6 +16,66 @@
 </head>
 <body>
 
+<a class="visualmente-oculto" href="#contenido">Saltar al contenido</a>
+
+<div class="cookies-banner" data-cookies-banner hidden role="region" aria-label="Preferencias de cookies">
+  <div class="cookies-banner-inner">
+    <p class="cookies-banner-texto">
+      Usamos cookies propias y de terceros para analizar la navegación y, si lo autorizas, mostrarte contenido y publicidad relevante. Puedes aceptar todas, rechazarlas o personalizar tu elección. Más información en nuestra <a href="/aviso-legal.html#privacidad">política de privacidad</a>.
+    </p>
+    <div class="cookies-banner-acciones">
+      <button type="button" class="btn-texto" data-cookies-rechazar>Rechazar</button>
+      <button type="button" class="btn btn-sobre-oscuro" data-cookies-personalizar>Personalizar</button>
+      <button type="button" class="btn btn-cookies-aceptar" data-cookies-aceptar>Aceptar todas</button>
+    </div>
+  </div>
+</div>
+
+<div class="cookies-modal" data-cookies-modal hidden role="dialog" aria-modal="true" aria-labelledby="cookies-modal-titulo">
+  <div class="cookies-modal-caja">
+    <h2 id="cookies-modal-titulo">Preferencias de cookies</h2>
+    <p>Elige qué tipos de cookies quieres permitir. Las necesarias no se pueden desactivar porque son indispensables para el funcionamiento del sitio.</p>
+
+    <div class="cookies-categoria">
+      <div class="cookies-categoria-info">
+        <h3>Necesarias</h3>
+        <p>Permiten el funcionamiento básico del sitio (navegación, formulario de contacto). Siempre activas.</p>
+      </div>
+      <label class="cookies-switch">
+        <input type="checkbox" checked disabled aria-label="Cookies necesarias, siempre activas" />
+        <span class="cookies-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookies-categoria">
+      <div class="cookies-categoria-info">
+        <h3>Analíticas</h3>
+        <p>Nos ayudan a entender cómo se usa el sitio (Google Analytics) para mejorar la experiencia.</p>
+      </div>
+      <label class="cookies-switch">
+        <input type="checkbox" data-cookies-toggle="analiticas" aria-label="Permitir cookies analíticas" />
+        <span class="cookies-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookies-categoria">
+      <div class="cookies-categoria-info">
+        <h3>Marketing</h3>
+        <p>Permiten mostrar publicidad relevante en Google y Meta (Instagram/Facebook) según tu interés.</p>
+      </div>
+      <label class="cookies-switch">
+        <input type="checkbox" data-cookies-toggle="marketing" aria-label="Permitir cookies de marketing" />
+        <span class="cookies-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookies-modal-acciones">
+      <button type="button" class="btn btn-secundario" data-cookies-cerrar>Cancelar</button>
+      <button type="button" class="btn btn-primario" data-cookies-guardar>Guardar preferencias</button>
+    </div>
+  </div>
+</div>
+
 <header class="encabezado">
   <div class="barra-nav contenedor" style="padding-left:0; padding-right:0;">
     <a href="/" class="marca" aria-label="Dermaren — Inicio">
@@ -52,10 +112,71 @@
         <h2>Aviso legal</h2>
         <p>[PENDIENTE: identificación de la sociedad o persona responsable del sitio — razón social, RUT, domicilio — y condiciones generales de uso del sitio web de Dermaren.]</p>
       </div>
+
       <div id="privacidad" data-reveal style="margin-top:3rem;">
         <h2>Política de privacidad</h2>
-        <p>[PENDIENTE: redactar política de privacidad conforme a la Ley 19.628 sobre Protección de la Vida Privada (Chile), detallando qué datos se recopilan a través del formulario de contacto, con qué finalidad se usan, plazo de conservación y cómo ejercer derechos de acceso, rectificación y eliminación.]</p>
-        <p>Este sitio utiliza herramientas de analítica (Google Analytics), publicidad (Google Ads, Meta Ads) y medición de conversiones, que pueden emplear cookies. [PENDIENTE: agregar banner de consentimiento de cookies si se apunta a usuarios de la Unión Europea o se requiere por normativa local.]</p>
+        <p>
+          Dermaren respeta tu privacidad y trata tus datos personales conforme a la
+          Ley N.º 19.628 sobre Protección de la Vida Privada y a la Ley N.º 21.719,
+          que moderniza la protección de datos personales en Chile y entra en vigor
+          el 1 de diciembre de 2026 (nueva Agencia de Protección de Datos Personales).
+        </p>
+        <p>
+          A través del formulario de contacto de este sitio recopilamos tu nombre,
+          teléfono, correo electrónico y el motivo de tu consulta, con la única
+          finalidad de responderte y coordinar tu hora. No compartimos estos datos
+          con terceros salvo obligación legal. Conservamos esta información solo
+          mientras sea necesaria para gestionar tu solicitud.
+        </p>
+        <p>
+          De acuerdo a la ley, tienes derecho a acceder, rectificar, cancelar u
+          oponerte al uso de tus datos, así como a solicitar su portabilidad o
+          bloqueo, y a revocar en cualquier momento un consentimiento ya entregado.
+          Puedes ejercer estos derechos escribiendo a
+          <a href="mailto:contacto@dermaren.cl" style="text-decoration:underline;">contacto@dermaren.cl</a>.
+        </p>
+        <p>[PENDIENTE: confirmar identidad de la persona/sociedad responsable del tratamiento de datos (razón social y RUT) para completar esta política conforme a la Ley 21.719.]</p>
+      </div>
+
+      <div id="cookies" data-reveal style="margin-top:3rem;">
+        <h2>Política de cookies</h2>
+        <p>
+          Este sitio usa cookies propias y de terceros. Las necesarias permiten que
+          el sitio funcione correctamente y no requieren autorización. Las
+          analíticas y de marketing solo se activan si tú lo autorizas de forma
+          explícita, y puedes cambiar tu elección cuando quieras.
+        </p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;">
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid var(--borde);">
+              <th style="padding:0.6rem 0.5rem 0.6rem 0;">Categoría</th>
+              <th style="padding:0.6rem 0.5rem;">Finalidad</th>
+              <th style="padding:0.6rem 0 0.6rem 0.5rem;">¿Requiere consentimiento?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--borde);">
+              <td style="padding:0.6rem 0.5rem 0.6rem 0;">Necesarias</td>
+              <td style="padding:0.6rem 0.5rem;">Navegación, envío del formulario de contacto.</td>
+              <td style="padding:0.6rem 0 0.6rem 0.5rem;">No</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--borde);">
+              <td style="padding:0.6rem 0.5rem 0.6rem 0;">Analíticas</td>
+              <td style="padding:0.6rem 0.5rem;">Google Analytics: entender cómo se usa el sitio para mejorarlo.</td>
+              <td style="padding:0.6rem 0 0.6rem 0.5rem;">Sí</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.5rem 0.6rem 0;">Marketing</td>
+              <td style="padding:0.6rem 0.5rem;">Google Ads y Meta Ads: medir y personalizar publicidad.</td>
+              <td style="padding:0.6rem 0 0.6rem 0.5rem;">Sí</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Puedes cambiar tu elección en cualquier momento, con la misma facilidad
+          con que la otorgaste, desde este botón:
+        </p>
+        <button type="button" class="btn btn-secundario" data-cookies-gestionar>Gestionar preferencias de cookies</button>
       </div>
     </div>
   </section>
@@ -69,7 +190,7 @@
         <p>Clínica dermatológica dirigida por la Dra. Katerine Codriansky. Ciencia, salud y bienestar para tu piel.</p>
       </div>
       <div><h4>Navegación</h4><ul><li><a href="/servicios.html">Servicios</a></li><li><a href="/sobre-la-doctora.html">La Dra. Codriansky</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/aviso-legal.html#privacidad">Política de privacidad</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/aviso-legal.html#privacidad">Política de privacidad</a></li><li><a href="/aviso-legal.html#cookies" data-cookies-gestionar>Gestionar cookies</a></li></ul></div>
       <div><h4>Contacto</h4><ul><li>Centro Médico MED — Baquedano 166, Puerto Varas</li><li>Clínica Puerto Varas — Doctor Otto Bader 3, Puerto Varas</li><li><a href="tel:+56224756060">(2) 2475 6060</a></li><li><a href="mailto:contacto@dermaren.cl">contacto@dermaren.cl</a></li></ul></div>
     </div>
     <div class="pie-bottom"><span>© <span data-anio>2026</span> Dermaren Clínica Dermatológica. Todos los derechos reservados.</span></div>
