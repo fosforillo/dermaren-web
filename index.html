@@ -54,37 +54,41 @@
   "description": "Clínica dermatológica dirigida por la Dra. Katerine Codriansky, especializada en dermatología médica, estética y quirúrgica en Puerto Varas, Chile.",
   "medicalSpecialty": "Dermatology",
   "priceRange": "$$",
-  "telephone": "+56-9-PENDIENTE",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "[PENDIENTE: dirección exacta]",
-    "addressLocality": "Puerto Varas",
-    "addressRegion": "Región de Los Lagos",
-    "postalCode": "[PENDIENTE]",
-    "addressCountry": "CL"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "[PENDIENTE]",
-    "longitude": "[PENDIENTE]"
-  },
-  "openingHoursSpecification": [
+  "telephone": ["+56224756060", "+56969046811"],
+  "address": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "18:30"
+      "@type": "PostalAddress",
+      "name": "Centro Médico MED",
+      "streetAddress": "Baquedano 166",
+      "addressLocality": "Puerto Varas",
+      "addressRegion": "Región de Los Lagos",
+      "postalCode": "5550000",
+      "addressCountry": "CL"
+    },
+    {
+      "@type": "PostalAddress",
+      "name": "Clínica Puerto Varas",
+      "streetAddress": "Doctor Otto Bader 3, edificio C",
+      "addressLocality": "Puerto Varas",
+      "addressRegion": "Región de Los Lagos",
+      "postalCode": "5610000",
+      "addressCountry": "CL"
     }
   ],
   "sameAs": [
-    "https://www.instagram.com/dermaren.cl",
-    "https://www.linkedin.com/company/dermaren"
+    "https://www.doctoralia.cl/perfil/katerine-codriansky",
+    "https://www.linkedin.com/in/katerine-codriansky-0890267b/"
   ],
   "founder": {
     "@type": "Physician",
     "name": "Dra. Katerine Codriansky",
     "medicalSpecialty": "Dermatology",
-    "jobTitle": "Dermatóloga"
+    "jobTitle": "Dermatóloga",
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Universidad Mayor de Santiago" },
+      { "@type": "CollegeOrUniversity", "name": "Boston University" }
+    ],
+    "memberOf": { "@type": "Organization", "name": "Sociedad Chilena de Dermatología" }
   },
   "potentialAction": {
     "@type": "ReserveAction",
@@ -156,8 +160,8 @@
         </div>
 
         <div class="hero-confianza">
-          <div class="hero-confianza-item"><strong>+[PENDIENTE]</strong><span>Años de experiencia</span></div>
-          <div class="hero-confianza-item"><strong>+[PENDIENTE]</strong><span>Pacientes atendidos</span></div>
+          <div class="hero-confianza-item"><strong>+16</strong><span>Años de trayectoria</span></div>
+          <div class="hero-confianza-item"><strong>2</strong><span>Sedes en Puerto Varas</span></div>
           <div class="hero-confianza-item"><strong>100%</strong><span>Enfoque personalizado</span></div>
         </div>
       </div>
@@ -240,14 +244,15 @@
         <h2>Dra. Katerine Codriansky</h2>
         <div class="linea-firma"></div>
         <p class="lead">
-          Dermatóloga con formación [PENDIENTE: universidad / subespecialidad], dedicada a
-          unir la precisión de la medicina con una experiencia de atención cálida,
-          moderna y basada en evidencia.
+          Dermatóloga formada en la Universidad Mayor de Santiago y especializada en
+          Boston University (EE.UU.), dedicada a unir la precisión de la medicina con
+          una experiencia de atención cálida, moderna y basada en evidencia.
         </p>
         <ul class="lista-credenciales">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg> Médico Cirujano, especialista en Dermatología [PENDIENTE: universidad]</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg> Miembro de la Sociedad Chilena de Dermatología [PENDIENTE]</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg> +[PENDIENTE] años de experiencia clínica</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg> Médico Cirujano, Universidad Mayor de Santiago (2005)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg> Especialidad en Dermatología, Boston University, EE.UU. (2009) · CONACEM (2010)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg> Miembro de la Sociedad Chilena de Dermatología</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg> Ejerciendo en Puerto Varas desde 2020</li>
         </ul>
         <div class="hero-acciones" style="margin-top:2rem;">
           <a href="/sobre-la-doctora.html" class="btn btn-secundario">Conocer su trayectoria</a>
@@ -266,7 +271,7 @@
       <div class="pasos" data-reveal>
         <div class="paso">
           <h3>Reserva tu hora</h3>
-          <p>Agenda online, por WhatsApp o teléfono. Confirmamos tu cita en menos de 24 horas.</p>
+          <p>Agenda online a través de Doctoralia o por teléfono. Elige la sede que te quede más cerca.</p>
         </div>
         <div class="paso">
           <h3>Evaluación inicial</h3>
@@ -288,23 +293,27 @@
   <section class="seccion-suave">
     <div class="contenedor">
       <div class="encabezado-seccion centrado" data-reveal style="margin-left:auto;margin-right:auto;">
-        <span class="kicker">Testimonios</span>
+        <span class="kicker">Opiniones verificadas</span>
         <h2>La confianza de nuestros pacientes</h2>
+        <p class="lead">Opiniones reales de pacientes, verificadas y publicadas en el perfil de Doctoralia de la Dra. Codriansky.</p>
       </div>
       <div class="testimonios" data-reveal>
         <div class="testimonio">
-          <p>"[PENDIENTE: testimonio real de paciente, con autorización de uso]"</p>
-          <div class="testimonio-autor">— Paciente, Puerto Varas</div>
+          <p>"Excelente atención, cercana, empática, puntual. Le dio justo al clavo al diagnóstico que me tenía aproblemado hace meses y no me habían podido resolver, el tratamiento me dejó como nuevo. Recomendada."</p>
+          <div class="testimonio-autor">— N.S., opinión verificada · Centro Médico MED</div>
         </div>
         <div class="testimonio">
-          <p>"[PENDIENTE: testimonio real de paciente, con autorización de uso]"</p>
-          <div class="testimonio-autor">— Paciente, Puerto Varas</div>
+          <p>"Es una muy buena dermatóloga, muy apasionada por lo que hace, dedicada y tiene un excelente trato con los pacientes."</p>
+          <div class="testimonio-autor">— B.C.C., opinión verificada · Clínica Puerto Varas</div>
         </div>
         <div class="testimonio">
-          <p>"[PENDIENTE: testimonio real de paciente, con autorización de uso]"</p>
-          <div class="testimonio-autor">— Paciente, Puerto Varas</div>
+          <p>"Muy amable y empática desde el momento en que sale a llamar al paciente. Se nota dedicación e interés en el paciente."</p>
+          <div class="testimonio-autor">— Alicia Brauning, cita verificada · Centro Médico MED</div>
         </div>
       </div>
+      <p style="margin-top:2rem;text-align:center;">
+        <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" class="servicio-enlace">Ver las 5 opiniones en Doctoralia →</a>
+      </p>
     </div>
   </section>
 
@@ -315,11 +324,11 @@
         <div>
           <span class="kicker" style="color:var(--verde-agua);">Agenda tu hora</span>
           <h2>Empecemos a cuidar tu piel hoy</h2>
-          <p>Cupos limitados semanales. Reserva online o escríbenos por WhatsApp y te confirmamos tu hora a la brevedad.</p>
+          <p>Cupos limitados semanales. Reserva online y te confirmamos tu hora en la sede que prefieras.</p>
         </div>
         <div class="cta-reserva-acciones">
           <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" class="btn btn-sobre-oscuro" data-evento-reserva="cta_seccion">Reservar hora</a>
-          <a href="https://wa.me/56900000000" class="btn btn-sobre-oscuro" data-evento-reserva="whatsapp_cta" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="/contacto.html#ubicaciones" class="btn btn-sobre-oscuro" data-evento-reserva="ver_ubicaciones">Ver ubicaciones</a>
         </div>
       </div>
     </div>
@@ -357,8 +366,9 @@
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><span class="marcado-pendiente">[PENDIENTE] Dirección, Puerto Varas, Región de Los Lagos</span></li>
-          <li><a href="tel:+56900000000">[PENDIENTE] +56 9 0000 0000</a></li>
+          <li>Centro Médico MED — Baquedano 166, Puerto Varas</li>
+          <li>Clínica Puerto Varas — Doctor Otto Bader 3, Puerto Varas</li>
+          <li><a href="tel:+56224756060">(2) 2475 6060</a></li>
           <li><a href="mailto:contacto@dermaren.cl">contacto@dermaren.cl</a></li>
         </ul>
       </div>
@@ -366,13 +376,13 @@
     <div class="pie-bottom">
       <span>© <span data-anio>2026</span> Dermaren Clínica Dermatológica. Todos los derechos reservados.</span>
       <div class="pie-social">
-        <a href="https://www.instagram.com/dermaren.cl" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" aria-label="Perfil en Doctoralia" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
       </div>
     </div>
   </div>
 </footer>
 
-<a class="whatsapp-flotante" href="https://wa.me/56900000000" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-evento-reserva="whatsapp_flotante">
+<a class="whatsapp-flotante" href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" aria-label="Reservar hora online" data-evento-reserva="flotante_doctoralia">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1-.7-.3-1.4-.8-2-1.4-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.1 0-.3 0-.4-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.9.9-1 2.1-.4 3.2.6 1.1 1.5 2.3 2.7 3.3 1.4 1.2 2.6 1.8 3.5 2.1.8.3 1.5.2 2.1-.1.6-.3 1.1-1 1.2-1.4.1-.4.1-.8 0-.9-.1-.1-.3-.1-.5-.2Z"/></svg>
 </a>
 
