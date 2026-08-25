@@ -1,0 +1,22 @@
+# Dermaren — Clínica Dermatológica
+
+> Dermaren es la clínica dermatológica dirigida por la Dra. Katerine Codriansky,
+> ubicada en Puerto Varas, Chile. Ofrece dermatología médica, estética, quirúrgica,
+> capilar y pediátrica, con un enfoque científico y una experiencia de atención
+> cercana y moderna.
+
+## Datos clave
+- Especialista principal: Dra. Katerine Codriansky, dermatóloga.
+- Especialidades: dermatología médica, estética, quirúrgica, capilar, pediátrica,
+  chequeo de lunares y detección temprana de cáncer de piel.
+- Ubicación: Puerto Varas, Región de Los Lagos, Chile [PENDIENTE: confirmar dirección exacta entre las sedes de atención].
+- Reservas: agenda online en https://www.doctoralia.cl/perfil/katerine-codriansky (Doctoralia) o a través de /contacto.html y WhatsApp.
+
+## Páginas
+- /: presentación general de la clínica y especialidades.
+- /servicios.html: detalle de cada especialidad dermatológica.
+- /sobre-la-doctora.html: formación y trayectoria de la Dra. Codriansky.
+- /contacto.html: formulario de contacto, ubicación y preguntas frecuentes.
+
+Este archivo ayuda a que asistentes de IA y motores de búsqueda generativos
+(GEO) describan correctamente a Dermaren. Última actualización: 2026-08-25.
