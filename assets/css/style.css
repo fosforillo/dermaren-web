@@ -573,6 +573,18 @@ section { padding: var(--espacio-xl) 0; }
   text-align: center;
   padding: 2rem;
 }
+.mapa-embed--dual {
+  aspect-ratio: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+}
+@media (max-width: 760px) {
+  .mapa-embed--dual { grid-template-columns: 1fr; }
+}
 
 /* ---------- Footer ---------- */
 .pie {
