@@ -434,16 +434,40 @@ section { padding: var(--espacio-xl) 0; }
 .paso h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
 .paso p { font-size: 0.9rem; }
 
-/* ---------- Testimonios ---------- */
-.testimonios {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* ---------- Testimonios (carrusel) ---------- */
+.testimonios-carrusel {
+  position: relative;
+}
+
+.testimonios-track {
+  display: flex;
   gap: clamp(1.5rem, 3vw, 2.5rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testimonios-track::-webkit-scrollbar {
+  display: none;
 }
 
 .testimonio {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
   border-top: 1px solid var(--borde);
   padding-top: 1.75rem;
+}
+
+@media (min-width: 760px) {
+  .testimonio { flex: 0 0 calc(50% - 1.25rem); }
+}
+
+@media (min-width: 1020px) {
+  .testimonio { flex: 0 0 calc(33.333% - 1.667rem); }
 }
 
 .testimonio p {
@@ -459,6 +483,62 @@ section { padding: var(--espacio-xl) 0; }
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--texto-suave);
+}
+
+.carrusel-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.carrusel-btn {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--borde);
+  background: var(--blanco);
+  color: var(--azul-petroleo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.carrusel-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.carrusel-btn:hover {
+  background: var(--azul-petroleo);
+  color: var(--blanco);
+  border-color: var(--azul-petroleo);
+}
+
+.carrusel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carrusel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: var(--borde);
+  cursor: pointer;
+  transition: background 0.2s ease, width 0.2s ease;
+}
+
+.carrusel-dot.activo {
+  width: 22px;
+  background: var(--azul-petroleo);
 }
 
 /* ---------- CTA reserva ---------- */
@@ -814,7 +894,6 @@ body.js-reveal [data-reveal].en-vista { opacity: 1; transform: translateY(0); }
   .hero-visual { order: -1; max-width: 420px; margin: 0 auto; }
   .servicios-grid { grid-template-columns: repeat(2, 1fr); }
   .pasos { grid-template-columns: repeat(2, 1fr); row-gap: 2.5rem; }
-  .testimonios { grid-template-columns: 1fr; gap: 2.5rem; }
   .cta-reserva { grid-template-columns: 1fr; text-align: left; }
   .cta-reserva-acciones { justify-content: flex-start; }
   .info-contacto { grid-template-columns: 1fr; }
