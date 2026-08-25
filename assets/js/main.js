@@ -202,4 +202,71 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+  // Carrusel de opiniones (funciona sin JS gracias a scroll nativo con
+  // scroll-snap; este bloque solo agrega botones prev/next y los puntos).
+  document.querySelectorAll("[data-carrusel]").forEach(function (carrusel) {
+    var track = carrusel.querySelector("[data-carrusel-track]");
+    var slides = Array.prototype.slice.call(carrusel.querySelectorAll("[data-carrusel-slide]"));
+    var btnPrev = carrusel.querySelector("[data-carrusel-prev]");
+    var btnNext = carrusel.querySelector("[data-carrusel-next]");
+    var contenedorPuntos = carrusel.querySelector("[data-carrusel-dots]");
+    if (!track || !slides.length) return;
+
+    var puntos = [];
+    if (contenedorPuntos) {
+      slides.forEach(function (_, indice) {
+        var punto = document.createElement("button");
+        punto.type = "button";
+        punto.className = "carrusel-dot";
+        punto.setAttribute("aria-label", "Ir a la opinión " + (indice + 1));
+        punto.addEventListener("click", function () { irASlide(indice); });
+        contenedorPuntos.appendChild(punto);
+        puntos.push(punto);
+      });
+    }
+
+    function indiceActual() {
+      var centro = track.scrollLeft + track.clientWidth / 2;
+      var mejorIndice = 0;
+      var mejorDistancia = Infinity;
+      slides.forEach(function (slide, indice) {
+        var centroSlide = slide.offsetLeft + slide.offsetWidth / 2;
+        var distancia = Math.abs(centroSlide - centro);
+        if (distancia < mejorDistancia) {
+          mejorDistancia = distancia;
+          mejorIndice = indice;
+        }
+      });
+      return mejorIndice;
+    }
+
+    function actualizarPuntos() {
+      if (!puntos.length) return;
+      var actual = indiceActual();
+      puntos.forEach(function (punto, indice) {
+        punto.classList.toggle("activo", indice === actual);
+      });
+    }
+
+    function irASlide(indice) {
+      var destino = slides[Math.max(0, Math.min(indice, slides.length - 1))];
+      track.scrollTo({ left: destino.offsetLeft, behavior: "smooth" });
+    }
+
+    if (btnPrev) {
+      btnPrev.addEventListener("click", function () { irASlide(indiceActual() - 1); });
+    }
+    if (btnNext) {
+      btnNext.addEventListener("click", function () { irASlide(indiceActual() + 1); });
+    }
+
+    var pendiente;
+    track.addEventListener("scroll", function () {
+      clearTimeout(pendiente);
+      pendiente = setTimeout(actualizarPuntos, 100);
+    });
+
+    actualizarPuntos();
+  });
 });
