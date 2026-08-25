@@ -35,7 +35,7 @@
     {
       "@type": "Question",
       "name": "¿Cómo puedo reservar una hora en Dermaren?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Puedes reservar tu hora online a través de Doctoralia, eligiendo la sede y el horario que más te acomode. Completa el formulario de esta página si prefieres que te contactemos primero." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Puedes reservar tu hora online a través de Doctoralia, eligiendo la sede y el horario que más te acomode, o escribirnos directamente por WhatsApp." }
     },
     {
       "@type": "Question",
@@ -81,7 +81,7 @@
     <div class="cookies-categoria">
       <div class="cookies-categoria-info">
         <h3>Necesarias</h3>
-        <p>Permiten el funcionamiento básico del sitio (navegación, formulario de contacto). Siempre activas.</p>
+        <p>Permiten el funcionamiento básico del sitio (navegación, menú, preferencias). Siempre activas.</p>
       </div>
       <label class="cookies-switch">
         <input type="checkbox" checked disabled aria-label="Cookies necesarias, siempre activas" />
@@ -146,9 +146,10 @@
       <p class="migas"><a href="/">Inicio</a> / Contacto</p>
       <span class="kicker">Reserva tu hora</span>
       <h1>Hablemos sobre el cuidado de tu piel</h1>
-      <p class="lead">Reserva online en Doctoralia, completa el formulario o llámanos directamente a la sede de tu preferencia. Te confirmamos tu hora a la brevedad.</p>
+      <p class="lead">Por ahora, la forma más rápida de contactarnos es por WhatsApp o reservando directamente tu hora online en Doctoralia.</p>
       <div class="hero-acciones" style="margin-top:1.75rem;">
         <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" class="btn btn-primario" data-evento-reserva="contacto_doctoralia">Reservar en Doctoralia</a>
+        <a href="https://wa.me/56996476467" target="_blank" rel="noopener" class="btn btn-secundario" data-evento-reserva="contacto_whatsapp">Escribir por WhatsApp</a>
       </div>
     </div>
   </section>
@@ -157,75 +158,23 @@
     <div class="contenedor">
       <div class="info-contacto" data-reveal id="ubicaciones">
         <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Z"/></svg>
+          <h3>WhatsApp</h3>
+          <p>La vía más directa para escribirnos y coordinar tu hora.</p>
+          <p><a href="https://wa.me/56996476467" target="_blank" rel="noopener" data-evento-reserva="tarjeta_whatsapp">+56 9 9647 6467</a></p>
+        </div>
+        <div class="info-card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
           <h3>Centro Médico MED</h3>
           <p>Baquedano 166, Puerto Varas</p>
-          <p><a href="tel:+56224756060">(2) 2475 6060</a></p>
         </div>
         <div class="info-card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
           <h3>Clínica Puerto Varas</h3>
           <p>Doctor Otto Bader 3, edificio C, Puerto Varas</p>
-          <p><a href="tel:+56652333250">(65) 233 3250</a></p>
-        </div>
-        <div class="info-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-          <h3>Correo electrónico</h3>
-          <p>contacto@dermaren.cl</p>
-          <p style="margin-top:.5rem;color:var(--beige);font-size:.9em;">Atención solo particular, sin convenios con isapres o Fonasa.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="seccion-suave">
-    <div class="contenedor" style="max-width:760px;">
-      <div class="encabezado-seccion" data-reveal style="margin-bottom:2.5rem;">
-        <span class="kicker">Formulario</span>
-        <h2>Cuéntanos qué necesitas</h2>
-      </div>
-
-      <!--
-        SLOT: acción del formulario.
-        Conectar a un proveedor (Netlify Forms, Formspree, Google Forms, o backend propio).
-        Ejemplo con Netlify Forms (al desplegar en Netlify, descomentar data-netlify):
-      -->
-      <form class="form-grid" data-reveal method="POST" name="contacto" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contacto" />
-        <p class="visualmente-oculto"><label>No llenar si eres humano: <input name="bot-field" /></label></p>
-        <div class="campo">
-          <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" required />
-        </div>
-        <div class="campo">
-          <label for="telefono">Teléfono / WhatsApp</label>
-          <input type="tel" id="telefono" name="telefono" required />
-        </div>
-        <div class="campo">
-          <label for="email">Correo electrónico</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="campo">
-          <label for="motivo">Motivo de consulta</label>
-          <select id="motivo" name="motivo">
-            <option>Dermatología médica</option>
-            <option>Dermatología estética</option>
-            <option>Cirugía dermatológica</option>
-            <option>Chequeo de lunares</option>
-            <option>Dermatología capilar</option>
-            <option>Dermatología pediátrica</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="campo campo-full">
-          <label for="mensaje">Cuéntanos más (opcional)</label>
-          <textarea id="mensaje" name="mensaje"></textarea>
-        </div>
-        <div class="campo-full">
-          <button type="submit" class="btn btn-primario" data-evento-reserva="formulario_contacto">Enviar solicitud</button>
-          <p class="form-nota">Al enviar este formulario aceptas nuestra <a href="/aviso-legal.html#privacidad" style="text-decoration:underline;">política de privacidad</a>. Responderemos dentro de 24 horas hábiles.</p>
-        </div>
-      </form>
+      <p style="margin-top:1.5rem;color:var(--texto-suave);font-size:0.9rem;">Atención solo particular, sin convenios con isapres o Fonasa.</p>
     </div>
   </section>
 
@@ -251,7 +200,7 @@
       <div class="faq-lista" data-reveal>
         <div class="faq-item" data-abierto="true">
           <button class="faq-pregunta" aria-expanded="true">¿Cómo puedo reservar una hora en Dermaren?<span class="signo">+</span></button>
-          <div class="faq-respuesta"><div class="faq-respuesta-inner"><p>Puedes reservar tu hora online a través de <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" style="text-decoration:underline;">Doctoralia</a>, eligiendo la sede y el horario que más te acomode, o completando el formulario de esta página para que te contactemos.</p></div></div>
+          <div class="faq-respuesta"><div class="faq-respuesta-inner"><p>Puedes reservar tu hora online a través de <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" style="text-decoration:underline;">Doctoralia</a>, eligiendo la sede y el horario que más te acomode, o escribirnos directamente por <a href="https://wa.me/56996476467" target="_blank" rel="noopener" style="text-decoration:underline;">WhatsApp</a>.</p></div></div>
         </div>
         <div class="faq-item" data-abierto="false">
           <button class="faq-pregunta" aria-expanded="false">¿Atienden por convenio de salud?<span class="signo">+</span></button>
@@ -279,13 +228,13 @@
       </div>
       <div><h4>Navegación</h4><ul><li><a href="/servicios.html">Servicios</a></li><li><a href="/sobre-la-doctora.html">La Dra. Codriansky</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
       <div><h4>Legal</h4><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/aviso-legal.html#privacidad">Política de privacidad</a></li><li><a href="/aviso-legal.html#cookies" data-cookies-gestionar>Gestionar cookies</a></li></ul></div>
-      <div><h4>Contacto</h4><ul><li>Centro Médico MED — Baquedano 166, Puerto Varas</li><li>Clínica Puerto Varas — Doctor Otto Bader 3, Puerto Varas</li><li><a href="tel:+56224756060">(2) 2475 6060</a></li><li><a href="mailto:contacto@dermaren.cl">contacto@dermaren.cl</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/56996476467" target="_blank" rel="noopener">WhatsApp: +56 9 9647 6467</a></li><li>Centro Médico MED — Baquedano 166, Puerto Varas</li><li>Clínica Puerto Varas — Doctor Otto Bader 3, Puerto Varas</li></ul></div>
     </div>
     <div class="pie-bottom"><span>© <span data-anio>2026</span> Dermaren Clínica Dermatológica. Todos los derechos reservados.</span></div>
   </div>
 </footer>
 
-<a class="whatsapp-flotante" href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" aria-label="Reservar hora online" data-evento-reserva="flotante_doctoralia">
+<a class="whatsapp-flotante" href="https://wa.me/56996476467" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-evento-reserva="whatsapp_flotante">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Z"/></svg>
 </a>
 <script src="/assets/js/main.js"></script>

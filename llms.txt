@@ -17,8 +17,9 @@
   - Clínica Puerto Varas — Doctor Otto Bader 3, edificio C, Puerto Varas. Tel: (65) 233 3250.
   - También ofrece videoconsultas online.
 - Modalidad de atención: solo pacientes particulares (sin convenios con Fonasa o isapres).
-- Reservas: agenda online en https://www.doctoralia.cl/perfil/katerine-codriansky (Doctoralia,
-  elige sede y horario) o a través de /contacto.html.
+- Contacto y reservas: por ahora solo por WhatsApp (+56 9 9647 6467, https://wa.me/56996476467)
+  o agenda online en https://www.doctoralia.cl/perfil/katerine-codriansky (Doctoralia, elige
+  sede y horario). El sitio no tiene formulario de contacto ni correo electrónico activos.
 - Opiniones de pacientes: 5 opiniones verificadas y públicas en el perfil de Doctoralia,
   destacadas en la página de inicio.
 
@@ -26,7 +27,7 @@
 - /: presentación general de la clínica y especialidades.
 - /servicios.html: detalle de cada especialidad dermatológica.
 - /sobre-la-doctora.html: formación y trayectoria de la Dra. Codriansky.
-- /contacto.html: formulario de contacto, ubicaciones (mapas) y preguntas frecuentes.
+- /contacto.html: botones de WhatsApp y Doctoralia, ubicaciones (mapas) y preguntas frecuentes.
 
 Este archivo ayuda a que asistentes de IA y motores de búsqueda generativos
 (GEO) describan correctamente a Dermaren. Última actualización: 2026-08-25.
