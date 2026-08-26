@@ -518,6 +518,12 @@ section { padding: var(--espacio-xl) 0; }
   border-color: var(--azul-petroleo);
 }
 
+.carrusel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
 .carrusel-dots {
   display: flex;
   align-items: center;
