@@ -204,7 +204,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Carrusel de opiniones (funciona sin JS gracias a scroll nativo con
-  // scroll-snap; este bloque solo agrega botones prev/next y los puntos).
+  // scroll-snap; este bloque agrega botones prev/next y los puntos, con
+  // una animación propia en vez de depender de scrollTo({behavior:"smooth"})
+  // del navegador, que en algunos navegadores/dispositivos no se mueve.
   document.querySelectorAll("[data-carrusel]").forEach(function (carrusel) {
     var track = carrusel.querySelector("[data-carrusel-track]");
     var slides = Array.prototype.slice.call(carrusel.querySelectorAll("[data-carrusel-slide]"));
@@ -213,7 +215,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var contenedorPuntos = carrusel.querySelector("[data-carrusel-dots]");
     if (!track || !slides.length) return;
 
+    var indiceActivo = 0;
+    var animacionEnCurso = null;
     var puntos = [];
+
     if (contenedorPuntos) {
       slides.forEach(function (_, indice) {
         var punto = document.createElement("button");
@@ -226,13 +231,47 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    function indiceActual() {
-      var centro = track.scrollLeft + track.clientWidth / 2;
+    function actualizarPuntos() {
+      puntos.forEach(function (punto, indice) {
+        punto.classList.toggle("activo", indice === indiceActivo);
+      });
+    }
+
+    function desplazarA(destinoLeft) {
+      if (animacionEnCurso) cancelAnimationFrame(animacionEnCurso);
+      var inicio = track.scrollLeft;
+      var distancia = destinoLeft - inicio;
+      if (Math.abs(distancia) < 1) return;
+      var duracion = 350;
+      var t0 = null;
+      function paso(marca) {
+        if (t0 === null) t0 = marca;
+        var progreso = Math.min((marca - t0) / duracion, 1);
+        var suavizado = 1 - Math.pow(1 - progreso, 3); // ease-out cubic
+        track.scrollLeft = inicio + distancia * suavizado;
+        if (progreso < 1) {
+          animacionEnCurso = requestAnimationFrame(paso);
+        } else {
+          animacionEnCurso = null;
+        }
+      }
+      animacionEnCurso = requestAnimationFrame(paso);
+    }
+
+    function irASlide(indice) {
+      indiceActivo = Math.max(0, Math.min(indice, slides.length - 1));
+      desplazarA(slides[indiceActivo].offsetLeft);
+      actualizarPuntos();
+    }
+
+    function indiceMasCercanoAScroll() {
+      // Se usa solo para sincronizar los puntos si la persona arrastra el
+      // carrusel manualmente (touch / swipe / trackpad).
+      var posicion = track.scrollLeft;
       var mejorIndice = 0;
       var mejorDistancia = Infinity;
       slides.forEach(function (slide, indice) {
-        var centroSlide = slide.offsetLeft + slide.offsetWidth / 2;
-        var distancia = Math.abs(centroSlide - centro);
+        var distancia = Math.abs(slide.offsetLeft - posicion);
         if (distancia < mejorDistancia) {
           mejorDistancia = distancia;
           mejorIndice = indice;
@@ -241,30 +280,21 @@ document.addEventListener("DOMContentLoaded", function () {
       return mejorIndice;
     }
 
-    function actualizarPuntos() {
-      if (!puntos.length) return;
-      var actual = indiceActual();
-      puntos.forEach(function (punto, indice) {
-        punto.classList.toggle("activo", indice === actual);
-      });
-    }
-
-    function irASlide(indice) {
-      var destino = slides[Math.max(0, Math.min(indice, slides.length - 1))];
-      track.scrollTo({ left: destino.offsetLeft, behavior: "smooth" });
-    }
-
     if (btnPrev) {
-      btnPrev.addEventListener("click", function () { irASlide(indiceActual() - 1); });
+      btnPrev.addEventListener("click", function () { irASlide(indiceActivo - 1); });
     }
     if (btnNext) {
-      btnNext.addEventListener("click", function () { irASlide(indiceActual() + 1); });
+      btnNext.addEventListener("click", function () { irASlide(indiceActivo + 1); });
     }
 
     var pendiente;
     track.addEventListener("scroll", function () {
+      if (animacionEnCurso) return; // evita pisar el índice mientras animamos nosotros mismos
       clearTimeout(pendiente);
-      pendiente = setTimeout(actualizarPuntos, 100);
+      pendiente = setTimeout(function () {
+        indiceActivo = indiceMasCercanoAScroll();
+        actualizarPuntos();
+      }, 120);
     });
 
     actualizarPuntos();
