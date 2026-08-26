@@ -207,6 +207,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // scroll-snap; este bloque agrega botones prev/next y los puntos, con
   // una animación propia en vez de depender de scrollTo({behavior:"smooth"})
   // del navegador, que en algunos navegadores/dispositivos no se mueve.
+  //
+  // Importante: como en pantallas anchas se ven 2 o 3 opiniones a la vez,
+  // no todas las opiniones pueden llegar a ser "la de más a la izquierda"
+  // (las últimas quedan pegadas al borde derecho antes de eso). Por eso
+  // se calcula cuántas posiciones distintas existen realmente
+  // (calcularIndiceMaximo) y los puntos/flechas solo navegan hasta ahí,
+  // para no dar la impresión de que hay más opiniones de las 5 reales.
   document.querySelectorAll("[data-carrusel]").forEach(function (carrusel) {
     var track = carrusel.querySelector("[data-carrusel-track]");
     var slides = Array.prototype.slice.call(carrusel.querySelectorAll("[data-carrusel-slide]"));
@@ -216,25 +223,41 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!track || !slides.length) return;
 
     var indiceActivo = 0;
+    var indiceMaximo = 0;
     var animacionEnCurso = null;
     var puntos = [];
 
-    if (contenedorPuntos) {
-      slides.forEach(function (_, indice) {
-        var punto = document.createElement("button");
-        punto.type = "button";
-        punto.className = "carrusel-dot";
-        punto.setAttribute("aria-label", "Ir a la opinión " + (indice + 1));
-        punto.addEventListener("click", function () { irASlide(indice); });
-        contenedorPuntos.appendChild(punto);
-        puntos.push(punto);
-      });
+    function calcularIndiceMaximo() {
+      var maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      for (var i = slides.length - 1; i >= 0; i--) {
+        if (slides[i].offsetLeft <= maxScroll + 1) return i;
+      }
+      return 0;
     }
 
-    function actualizarPuntos() {
+    function reconstruirPuntos() {
+      if (!contenedorPuntos) return;
+      contenedorPuntos.innerHTML = "";
+      puntos = [];
+      for (var indice = 0; indice <= indiceMaximo; indice++) {
+        (function (indice) {
+          var punto = document.createElement("button");
+          punto.type = "button";
+          punto.className = "carrusel-dot";
+          punto.setAttribute("aria-label", "Ir a la opinión " + (indice + 1));
+          punto.addEventListener("click", function () { irASlide(indice); });
+          contenedorPuntos.appendChild(punto);
+          puntos.push(punto);
+        })(indice);
+      }
+    }
+
+    function actualizarControles() {
       puntos.forEach(function (punto, indice) {
         punto.classList.toggle("activo", indice === indiceActivo);
       });
+      if (btnPrev) btnPrev.disabled = indiceActivo <= 0;
+      if (btnNext) btnNext.disabled = indiceActivo >= indiceMaximo;
     }
 
     function desplazarA(destinoLeft) {
@@ -259,13 +282,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function irASlide(indice) {
-      indiceActivo = Math.max(0, Math.min(indice, slides.length - 1));
+      indiceActivo = Math.max(0, Math.min(indice, indiceMaximo));
       desplazarA(slides[indiceActivo].offsetLeft);
-      actualizarPuntos();
+      actualizarControles();
     }
 
     function indiceMasCercanoAScroll() {
-      // Se usa solo para sincronizar los puntos si la persona arrastra el
+      // Se usa solo para sincronizar los controles si la persona arrastra el
       // carrusel manualmente (touch / swipe / trackpad).
       var posicion = track.scrollLeft;
       var mejorIndice = 0;
@@ -277,7 +300,14 @@ document.addEventListener("DOMContentLoaded", function () {
           mejorIndice = indice;
         }
       });
-      return mejorIndice;
+      return Math.min(mejorIndice, indiceMaximo);
+    }
+
+    function recalcularLayout() {
+      indiceMaximo = calcularIndiceMaximo();
+      indiceActivo = Math.min(indiceActivo, indiceMaximo);
+      reconstruirPuntos();
+      actualizarControles();
     }
 
     if (btnPrev) {
@@ -287,16 +317,22 @@ document.addEventListener("DOMContentLoaded", function () {
       btnNext.addEventListener("click", function () { irASlide(indiceActivo + 1); });
     }
 
-    var pendiente;
+    var pendienteScroll;
     track.addEventListener("scroll", function () {
       if (animacionEnCurso) return; // evita pisar el índice mientras animamos nosotros mismos
-      clearTimeout(pendiente);
-      pendiente = setTimeout(function () {
+      clearTimeout(pendienteScroll);
+      pendienteScroll = setTimeout(function () {
         indiceActivo = indiceMasCercanoAScroll();
-        actualizarPuntos();
+        actualizarControles();
       }, 120);
     });
 
-    actualizarPuntos();
+    var pendienteResize;
+    window.addEventListener("resize", function () {
+      clearTimeout(pendienteResize);
+      pendienteResize = setTimeout(recalcularLayout, 150);
+    });
+
+    recalcularLayout();
   });
 });
