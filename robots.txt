@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.dermaren.cl/sitemap.xml
+Sitemap: https://dermaren-web.netlify.app/sitemap.xml

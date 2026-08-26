@@ -4,14 +4,29 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Página no encontrada | Dermaren</title>
+<meta name="description" content="La página que buscas no existe o fue movida. Vuelve al inicio de Dermaren, clínica dermatológica de la Dra. Katerine Codriansky en Puerto Varas." />
 <meta name="robots" content="noindex, follow" />
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Dermaren — Clínica Dermatológica" />
+<meta property="og:title" content="Página no encontrada | Dermaren" />
+<meta property="og:description" content="La página que buscas no existe o fue movida. Vuelve al inicio de Dermaren." />
+<meta property="og:url" content="https://dermaren-web.netlify.app/404.html" />
+<meta property="og:image" content="https://dermaren-web.netlify.app/assets/img/og-dermaren.jpg" />
+<meta property="og:locale" content="es_CL" />
+<meta name="twitter:card" content="summary_large_image" />
+
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="manifest" href="/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
+
+<a class="visualmente-oculto" href="#contenido">Saltar al contenido</a>
 
 <div class="cookies-banner" data-cookies-banner hidden role="region" aria-label="Preferencias de cookies">
   <div class="cookies-banner-inner">
@@ -34,7 +49,7 @@
     <div class="cookies-categoria">
       <div class="cookies-categoria-info">
         <h3>Necesarias</h3>
-        <p>Permiten el funcionamiento básico del sitio (navegación, formulario de contacto). Siempre activas.</p>
+        <p>Permiten el funcionamiento básico del sitio (navegación, menú, preferencias). Siempre activas.</p>
       </div>
       <label class="cookies-switch">
         <input type="checkbox" checked disabled aria-label="Cookies necesarias, siempre activas" />
@@ -71,7 +86,28 @@
   </div>
 </div>
 
-<main style="min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center;">
+<header class="encabezado">
+  <div class="barra-nav contenedor" style="padding-left:0; padding-right:0;">
+    <a href="/" class="marca" aria-label="Dermaren — Inicio">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 12c10 0 18 8 18 18s-8 18-18 18" stroke="#0D3B43" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span class="marca-texto"><span class="marca-nombre">DERMAREN</span><span class="marca-sub">Clínica dermatológica</span></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios.html">Servicios</a></li>
+        <li><a href="/sobre-la-doctora.html">La Dra. Codriansky</a></li>
+        <li><a href="/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" target="_blank" rel="noopener" class="btn btn-secundario" data-evento-reserva="nav">Reservar hora</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" style="min-height:60vh; display:flex; align-items:center; justify-content:center; text-align:center;">
   <div class="contenedor">
     <span class="kicker" style="justify-content:center;">Error 404</span>
     <h1 style="margin-top:1rem;">Esta página no existe</h1>
@@ -79,6 +115,27 @@
     <a href="/" class="btn btn-primario">Volver al inicio</a>
   </div>
 </main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-grid">
+      <div>
+        <div class="pie-marca"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 12c10 0 18 8 18 18s-8 18-18 18" stroke="#BFDAD6" stroke-width="2.2" stroke-linecap="round"/></svg><span>DERMAREN</span></div>
+        <p>Clínica dermatológica dirigida por la Dra. Katerine Codriansky. Ciencia, salud y bienestar para tu piel.</p>
+      </div>
+      <div><h4>Navegación</h4><ul><li><a href="/servicios.html">Servicios</a></li><li><a href="/sobre-la-doctora.html">La Dra. Codriansky</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="/aviso-legal.html">Aviso legal</a></li><li><a href="/aviso-legal.html#privacidad">Política de privacidad</a></li><li><a href="/aviso-legal.html#cookies" data-cookies-gestionar>Gestionar cookies</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/56996476467" target="_blank" rel="noopener">WhatsApp: +56 9 9647 6467</a></li><li>Centro Médico MED — Baquedano 166, Puerto Varas</li><li>Clínica Puerto Varas — Doctor Otto Bader 3, Puerto Varas</li></ul></div>
+    </div>
+    <div class="pie-bottom">
+      <span>© <span data-anio>2026</span> Dermaren Clínica Dermatológica. Todos los derechos reservados.</span>
+      <div class="pie-social">
+        <a href="https://www.doctoralia.cl/perfil/katerine-codriansky?saasonly=true" aria-label="Perfil en Doctoralia" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
