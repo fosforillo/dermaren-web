@@ -1,12 +1,46 @@
 [build]
   publish = "."
 
+# ------------------------------------------------------------------
+# Cabeceras de seguridad (aplican a todo el sitio).
+#
+# Content-Security-Policy: solo permite cargar recursos desde este
+# mismo sitio ("'self'"), Google Fonts (hoja de estilos + tipografías)
+# y el iframe de Google Maps de la página de contacto. No hay scripts
+# inline activos en el sitio, así que script-src queda estricto (sin
+# 'unsafe-inline' ni 'unsafe-eval'). style-src sí necesita
+# 'unsafe-inline' porque varias páginas usan atributos style="" —
+# el riesgo de eso es bajo (no permite ejecutar JavaScript).
+#
+# IMPORTANTE — si en el futuro se activa Google Tag Manager (ver
+# GTM_ID en assets/js/main.js) hay que sumar estos orígenes aquí:
+#   script-src:  https://www.googletagmanager.com
+#   img-src:     https://www.googletagmanager.com https://www.google-analytics.com
+#   connect-src: https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com
+# De lo contrario el navegador bloqueará el script de GTM aunque el
+# código lo intente cargar.
+# ------------------------------------------------------------------
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
+    X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=(), browsing-topics=()"
+    X-Permitted-Cross-Domain-Policies = "none"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
+# El README.md es documentación interna para desarrollo (no para
+# visitantes del sitio) — existe en el repo pero no debe quedar
+# público en la URL en vivo.
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
 
 [[redirects]]
   from = "/*"
