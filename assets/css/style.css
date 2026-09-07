@@ -350,6 +350,86 @@ section { padding: var(--espacio-xl) 0; }
 }
 .sobre-foto img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ---------- Galería doble (dos fotos clínicas por sección de servicio) ---------- */
+.galeria-doble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+.galeria-doble figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin: 0;
+}
+.galeria-doble img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 640px) {
+  .galeria-doble { grid-template-columns: 1fr; }
+}
+
+/* ---------- Reservar hora (un solo botón, 2 alternativas por sede) ---------- */
+.reserva-dropdown { position: relative; display: inline-flex; }
+.reserva-trigger {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  line-height: inherit;
+}
+.reserva-trigger::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 0.15rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--transicion);
+}
+.reserva-dropdown.abierto .reserva-trigger::after { transform: translateY(1px) rotate(225deg); }
+
+.reserva-menu {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 0;
+  z-index: 120;
+  min-width: 258px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: 0 20px 45px rgba(13, 59, 67, 0.16);
+  padding: 1.1rem 1.2rem;
+  display: none;
+}
+.reserva-dropdown.abierto .reserva-menu { display: block; }
+.nav-cta .reserva-menu { left: auto; right: 0; }
+
+.reserva-menu-grupo + .reserva-menu-grupo {
+  margin-top: 0.95rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--borde);
+}
+.reserva-menu-titulo {
+  display: block;
+  font-family: var(--fuente-texto);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 0.5rem;
+}
+.reserva-menu a {
+  display: block;
+  padding: 0.3rem 0;
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+.reserva-menu a:hover, .reserva-menu a:focus-visible { color: var(--azul-petroleo); }
+
 .linea-firma {
   width: 70px;
   height: 1px;
@@ -628,7 +708,7 @@ section { padding: var(--espacio-xl) 0; }
 /* ---------- Info de contacto (tarjetas) ---------- */
 .info-contacto {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 .info-card {
