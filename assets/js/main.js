@@ -203,6 +203,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // "Reservar hora": un solo botón que despliega las 2 alternativas
+  // (Clínica Puerto Varas / Centro Médico MED). Solo un menú abierto
+  // a la vez; se cierra al hacer click afuera, con Escape, o al elegir
+  // una opción.
+  var dropdownsReserva = Array.prototype.slice.call(document.querySelectorAll(".reserva-dropdown"));
+  if (dropdownsReserva.length) {
+    function cerrarReservaMenus(excepto) {
+      dropdownsReserva.forEach(function (dd) {
+        if (dd === excepto) return;
+        dd.classList.remove("abierto");
+        var btn = dd.querySelector(".reserva-trigger");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      });
+    }
+
+    dropdownsReserva.forEach(function (dd) {
+      var trigger = dd.querySelector(".reserva-trigger");
+      if (!trigger) return;
+      trigger.addEventListener("click", function (evento) {
+        evento.stopPropagation();
+        var abierto = dd.classList.contains("abierto");
+        cerrarReservaMenus(null);
+        dd.classList.toggle("abierto", !abierto);
+        trigger.setAttribute("aria-expanded", abierto ? "false" : "true");
+      });
+      dd.querySelectorAll(".reserva-menu a").forEach(function (enlace) {
+        enlace.addEventListener("click", function () {
+          cerrarReservaMenus(null);
+        });
+      });
+    });
+
+    document.addEventListener("click", function (evento) {
+      if (!evento.target.closest(".reserva-dropdown")) cerrarReservaMenus(null);
+    });
+    document.addEventListener("keydown", function (evento) {
+      if (evento.key === "Escape") cerrarReservaMenus(null);
+    });
+  }
+
   // Carrusel de opiniones (funciona sin JS gracias a scroll nativo con
   // scroll-snap; este bloque agrega botones prev/next y los puntos, con
   // una animación propia en vez de depender de scrollTo({behavior:"smooth"})
