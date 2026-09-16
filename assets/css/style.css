@@ -157,28 +157,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--fuente-display);
 }
 
-.marca svg { width: 34px; height: 34px; }
-
-.marca-texto {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.marca-nombre {
-  font-size: 1.35rem;
-  letter-spacing: 0.14em;
-  color: var(--azul-petroleo);
-}
-
-.marca-sub {
-  font-family: var(--fuente-texto);
-  font-size: 0.55rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-  margin-top: 0.2rem;
-}
+.marca-logo { height: 34px; width: auto; display: block; }
 
 .nav-links {
   display: flex;
@@ -234,7 +213,11 @@ p:last-child { margin-bottom: 0; }
   position: relative;
   padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(3rem, 7vw, 5rem);
   background: linear-gradient(180deg, var(--verde-agua-suave) 0%, var(--blanco) 78%);
-  overflow: hidden;
+  /* overflow-x (no overflow: hidden en ambos ejes): evita scroll horizontal
+     de las animaciones data-reveal sin recortar verticalmente el menú de
+     "Reservar hora" cuando se abre cerca del borde inferior de la sección
+     (bug reportado 2026-09-16) */
+  overflow-x: hidden;
 }
 
 .hero-grid {
@@ -393,7 +376,9 @@ section { padding: var(--espacio-xl) 0; }
   position: absolute;
   top: calc(100% + 0.65rem);
   left: 0;
-  z-index: 120;
+  /* z-index por encima del banner de cookies (200) para que sus opciones
+     no queden tapadas antes de aceptar/rechazar (bug reportado 2026-09-16) */
+  z-index: 205;
   min-width: 258px;
   background: var(--blanco);
   border: 1px solid var(--borde);
@@ -766,9 +751,8 @@ section { padding: var(--espacio-xl) 0; }
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
-.pie-marca { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem; }
-.pie-marca svg { width: 30px; height: 30px; }
-.pie-marca span { font-family: var(--fuente-display); font-size: 1.2rem; letter-spacing: 0.12em; color: var(--blanco); }
+.pie-marca { display: flex; align-items: center; margin-bottom: 1rem; }
+.pie-marca-logo { height: 30px; width: auto; display: block; }
 
 .pie h4 {
   color: var(--blanco);
@@ -950,7 +934,14 @@ body.js-reveal [data-reveal] {
   transform: translateY(18px);
   transition: opacity 900ms ease, transform 900ms ease;
 }
-body.js-reveal [data-reveal].en-vista { opacity: 1; transform: translateY(0); }
+/* transform: none (no translateY(0)) al terminar: cualquier valor de transform
+   distinto de "none", aunque sea 0px, deja el elemento como un nuevo contexto
+   de apilamiento CSS para siempre, lo que atrapaba el menú de "Reservar hora"
+   (dentro de .hero-copy[data-reveal]) por debajo del banner de cookies sin
+   importar su z-index. Con "none" el contexto desaparece al terminar la
+   transición y el z-index del menú vuelve a compararse normalmente contra el
+   resto de la página (bug reportado 2026-09-16). */
+body.js-reveal [data-reveal].en-vista { opacity: 1; transform: none; }
 
 /* ---------- Breadcrumb ---------- */
 .migas {
@@ -981,8 +972,7 @@ body.js-reveal [data-reveal].en-vista { opacity: 1; transform: translateY(0); }
   .barra-nav { padding-left: clamp(1rem, 2.5vw, 1.75rem); padding-right: clamp(1rem, 2.5vw, 1.75rem); }
   .nav-links { gap: clamp(0.9rem, 2vw, 1.6rem); }
   .nav-links a { font-size: 0.72rem; white-space: nowrap; }
-  .marca-sub { display: none; }
-  .marca-nombre { font-size: 1.05rem; }
+  .marca-logo { height: 27px; }
   .reserva-trigger { padding: 0.75rem 1.15rem; font-size: 0.72rem; }
 }
 
