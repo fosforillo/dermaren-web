@@ -12,13 +12,11 @@
 # 'unsafe-inline' porque varias páginas usan atributos style="" —
 # el riesgo de eso es bajo (no permite ejecutar JavaScript).
 #
-# IMPORTANTE — si en el futuro se activa Google Tag Manager (ver
-# GTM_ID en assets/js/main.js) hay que sumar estos orígenes aquí:
-#   script-src:  https://www.googletagmanager.com
-#   img-src:     https://www.googletagmanager.com https://www.google-analytics.com
-#   connect-src: https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com
-# De lo contrario el navegador bloqueará el script de GTM aunque el
-# código lo intente cargar.
+# Google Tag Manager (GTM-MXD63XJL, activado 2026-09-16 en
+# assets/js/main.js) agregado a script-src/img-src/connect-src abajo.
+# Solo se carga tras consentimiento explícito de la persona (ver
+# banner de cookies) — Consent Mode v2 (analytics_storage/ad_storage
+# denegados por defecto).
 # ------------------------------------------------------------------
 [[headers]]
   for = "/*"
@@ -31,7 +29,7 @@
     X-Permitted-Cross-Domain-Policies = "none"
     Cross-Origin-Opener-Policy = "same-origin"
     Cross-Origin-Resource-Policy = "same-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; frame-src https://www.google.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 
 # El README.md es documentación interna para desarrollo (no para
 # visitantes del sitio) — existe en el repo pero no debe quedar
