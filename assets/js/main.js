@@ -14,7 +14,7 @@
 // sea null, este script no carga ningún script de terceros:
 // solo registra la preferencia de la persona.
 // ============================================================
-var GTM_ID = null;
+var GTM_ID = "GTM-MXD63XJL";
 
 (function () {
   var CLAVE_CONSENTIMIENTO = "dermaren_consentimiento_cookies";
