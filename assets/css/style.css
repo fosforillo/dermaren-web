@@ -782,6 +782,10 @@ section { padding: var(--espacio-xl) 0; }
 .pie-social a { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 .pie-social svg { width: 15px; height: 15px; }
 
+.pie-creditos { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; opacity: 0.5; transition: opacity var(--transicion); }
+.pie-creditos:hover { opacity: 0.85; }
+.pie-creditos-icono { height: 13px; width: auto; display: block; }
+
 /* ---------- WhatsApp flotante ---------- */
 .whatsapp-flotante {
   position: fixed;
