@@ -13,6 +13,8 @@
   --blanco: #ffffff;
   --champagne: #e6dcc8;
   --beige: #c9bdaa;
+  --dorado: #ad8a4e;
+  --dorado-suave: #d4b976;
   --texto: #1c2b2d;
   --texto-suave: #4d5f60;
   --borde: rgba(13, 59, 67, 0.12);
@@ -83,7 +85,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
   content: "";
   width: 28px;
   height: 1px;
-  background: currentColor;
+  background: var(--dorado);
   display: inline-block;
 }
 
@@ -98,6 +100,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- Botones ---------- */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -111,7 +114,21 @@ p:last-child { margin-bottom: 0; }
   cursor: pointer;
   transition: background var(--transicion), color var(--transicion), border-color var(--transicion), transform var(--transicion);
   white-space: nowrap;
+  overflow: hidden;
 }
+
+/* Línea dorada: detalle que crece bajo el botón al pasar el cursor */
+.btn::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--dorado);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transicion);
+}
+.btn:hover::after { transform: scaleX(1); }
 
 .btn-primario {
   background: var(--azul-petroleo);
@@ -132,6 +149,12 @@ p:last-child { margin-bottom: 0; }
   border-color: rgba(255,255,255,0.55);
 }
 .btn-sobre-oscuro:hover { background: var(--blanco); color: var(--azul-petroleo); }
+
+/* ---------- Detalles dorados ---------- */
+.resaltado-dorado {
+  color: var(--dorado);
+  font-weight: 600;
+}
 
 /* ---------- Header ---------- */
 .encabezado {
@@ -191,6 +214,18 @@ p:last-child { margin-bottom: 0; }
 .nav-links a[aria-current="page"] { color: var(--azul-petroleo); }
 
 .nav-cta { display: flex; align-items: center; gap: 1.5rem; }
+
+.nav-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--azul-petroleo);
+  transition: color var(--transicion);
+}
+.nav-social svg { width: 17px; height: 17px; }
+.nav-social:hover { color: var(--dorado); }
 
 .nav-toggle {
   display: none;
@@ -277,22 +312,10 @@ p:last-child { margin-bottom: 0; }
 .hero-visual::after {
   content: "";
   position: absolute;
-  inset: 0;
-  border: 1px solid rgba(255,255,255,0.25);
-  margin: 14px;
-  pointer-events: none;
-}
-
-.hero-visual-caption {
-  position: absolute;
   left: 14px; right: 14px; bottom: 14px;
-  padding: 1rem 1.25rem;
-  background: rgba(13,59,67,0.72);
-  backdrop-filter: blur(6px);
-  color: var(--blanco);
-  font-family: var(--fuente-display);
-  font-size: 1rem;
-  font-style: italic;
+  height: 2px;
+  background: var(--dorado);
+  pointer-events: none;
 }
 
 /* ---------- Secciones genéricas ---------- */
@@ -779,7 +802,8 @@ section { padding: var(--espacio-xl) 0; }
 }
 
 .pie-social { display: flex; gap: 1rem; }
-.pie-social a { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.pie-social a { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color var(--transicion), color var(--transicion); }
+.pie-social a:hover { border-color: var(--dorado); color: var(--dorado); }
 .pie-social svg { width: 15px; height: 15px; }
 
 .pie-creditos { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; opacity: 0.5; transition: opacity var(--transicion); }
