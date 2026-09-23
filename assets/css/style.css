@@ -117,8 +117,10 @@ p:last-child { margin-bottom: 0; }
   overflow: hidden;
 }
 
-/* Línea dorada: detalle que crece bajo el botón al pasar el cursor */
-.btn::after {
+/* Línea dorada: detalle que crece bajo el botón al pasar el cursor.
+   Usa ::before (no ::after) para no chocar con el ícono del dropdown
+   de "Reservar hora", que ya usa ::after para su flecha. */
+.btn::before {
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -128,7 +130,7 @@ p:last-child { margin-bottom: 0; }
   transform-origin: left;
   transition: transform var(--transicion);
 }
-.btn:hover::after { transform: scaleX(1); }
+.btn:hover::before { transform: scaleX(1); }
 
 .btn-primario {
   background: var(--azul-petroleo);
