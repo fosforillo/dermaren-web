@@ -1,7 +1,11 @@
 {
-  "name": "Dermaren Clínica Dermatológica",
-  "short_name": "Dermaren",
-  "icons": [{ "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" }],
+  "name": "DermoGarda Clínica Dermatológica",
+  "short_name": "DermoGarda",
+  "icons": [
+    { "src": "/assets/img/favicon-32x32.png", "type": "image/png", "sizes": "32x32" },
+    { "src": "/assets/img/favicon-48x48.png", "type": "image/png", "sizes": "48x48" },
+    { "src": "/assets/img/favicon-512x512.png", "type": "image/png", "sizes": "512x512" }
+  ],
   "theme_color": "#0D3B43",
   "background_color": "#FFFFFF",
   "display": "standalone"
