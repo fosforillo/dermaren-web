@@ -192,6 +192,39 @@ document.addEventListener("DOMContentLoaded", function () {
     el.textContent = new Date().getFullYear();
   });
 
+  // Etiqueta automáticamente todos los links de contacto (WhatsApp, teléfono,
+  // Doctoralia) que no tengan data-evento-reserva, para que GTM pueda leer
+  // desde dónde se hizo el click con una variable de atributo (compatible
+  // con la CSP, sin 'unsafe-eval'). Formatos resultantes:
+  //   menu_<origen del botón>_<canal>   (links dentro del menú "Reservar hora")
+  //   footer_<canal>                    (links del pie de página)
+  //   contenido_<canal>                 (cualquier otro link del contenido)
+  (function etiquetarLinksContacto() {
+    function canalDe(href) {
+      if (href.indexOf("wa.me") > -1) return "whatsapp";
+      if (href.indexOf("tel:") === 0) return "telefono";
+      if (href.indexOf("doctoralia.cl") > -1) return "doctoralia";
+      return null;
+    }
+    document.querySelectorAll('a[href^="tel:"], a[href*="wa.me"], a[href*="doctoralia.cl"]').forEach(function (a) {
+      if (a.hasAttribute("data-evento-reserva")) return;
+      var canal = canalDe(a.getAttribute("href") || "");
+      if (!canal) return;
+      var menu = a.closest(".reserva-menu");
+      var prefijo;
+      if (menu) {
+        var dd = menu.closest(".reserva-dropdown");
+        var trigger = dd ? dd.querySelector(".reserva-trigger") : null;
+        prefijo = "menu_" + ((trigger && trigger.getAttribute("data-evento-reserva")) || "cta");
+      } else if (a.closest("footer")) {
+        prefijo = "footer";
+      } else {
+        prefijo = "contenido";
+      }
+      a.setAttribute("data-evento-reserva", prefijo + "_" + canal);
+    });
+  })();
+
   // Registro simple de eventos de conversión (dataLayer) para clicks de reserva
   document.querySelectorAll("[data-evento-reserva]").forEach(function (el) {
     el.addEventListener("click", function () {
